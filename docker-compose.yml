@@ -1,0 +1,29 @@
+version: '2'
+services:
+    web:
+        image: sky7.2
+        container_name: generic_sky
+        hostname: generic_sky
+        privileged: true
+        ports:
+            - "7000:80"
+            - "7100:443"
+            - "7200:7200"
+        expose:
+            - "80"
+            - "443"
+            - "7200"
+        volumes:
+            - /home/$USER/public_html:/var/www/html/
+            - ./logs:/var/log/apache2
+            - ./conf:/etc/apache2/sites-enabled/
+            - ./certs:/usr/local/apache2/certs
+        networks:
+            net:
+                ipv4_address: 172.19.0.2
+networks:
+    net:
+        driver: bridge
+        ipam:
+            config:
+            - subnet: 172.19.0.0/16
