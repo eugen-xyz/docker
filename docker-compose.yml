@@ -1,18 +1,16 @@
 version: '2'
 services:
     web:
-        image: sky7.2
-        container_name: generic_sky
-        hostname: generic_sky
+        image: php/7.2.10
+        container_name: php-7.2.10
+        hostname: php-7.2.10
         privileged: true
         ports:
-            - "7000:80"
-            - "7100:443"
-            - "7200:7200"
+            - "6100:80"
+            - "6000:443"
         expose:
             - "80"
             - "443"
-            - "7200"
         volumes:
             - /home/$USER/public_html:/var/www/html/
             - ./logs:/var/log/apache2
