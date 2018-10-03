@@ -2,12 +2,12 @@ version: '2'
 services:
     web:
         image: php/7.2.10
-        container_name: php-7.2.10
-        hostname: php-7.2.10
+        container_name: php_7.2.10
+        hostname: php_7.2.10
         privileged: true
         ports:
-            - "6100:80"
-            - "6000:443"
+            - "7200:80"
+            - "7443:443"
         expose:
             - "80"
             - "443"
@@ -18,10 +18,10 @@ services:
             - ./certs:/usr/local/apache2/certs
         networks:
             net:
-                ipv4_address: 172.19.0.2
+                ipv4_address: 172.70.0.3
 networks:
     net:
         driver: bridge
         ipam:
             config:
-            - subnet: 172.19.0.0/16
+            - subnet: 172.70.0.0/16
