@@ -1,9 +1,23 @@
 version: '2'
 services:
+    mariadb:
+        image: mariadb:10.2.9
+        container_name: docker_db
+        hostname: docker_db
+        expose:
+          - "3306"
+        volumes:
+          - ./data:/var/lib/mysql
+          - /etc/localtime:/etc/localtime
+        environment:
+          - MYSQL_ROOT_PASSWORD=bangtan
+        networks:
+          net:
+            ipv4_address: 172.70.0.2
     web:
         image: php/7.2.10
-        container_name: php_7.2.10
-        hostname: php_7.2.10
+        container_name: docker
+        hostname: docker
         privileged: true
         ports:
             - "7200:80"
