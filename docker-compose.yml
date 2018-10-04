@@ -1,19 +1,19 @@
 version: '3.2'
 services:
     mariadb:
-        image: mariadb:10.2.9
+        image: mariadb:latest
         container_name: docker_db
         hostname: docker_db
         expose:
-          - "3306"
+            - "3306"
         volumes:
-          - ./data:/var/lib/mysql
-          - /etc/localtime:/etc/localtime
+            - ./data:/var/lib/mysql
+            - /etc/localtime:/etc/localtime
         environment:
-          - MYSQL_ROOT_PASSWORD=bangtan
+            - MYSQL_ROOT_PASSWORD=bangtan
         networks:
-          net:
-            ipv4_address: 172.70.0.2
+            net:
+                ipv4_address: 172.80.0.2
     web:
         image: php/7.2.10
         container_name: docker
@@ -38,10 +38,10 @@ services:
             - ./certs:/usr/local/apache2/certs
         networks:
             net:
-                ipv4_address: 172.70.0.3
+                ipv4_address: 172.80.0.3
 networks:
     net:
         driver: bridge
         ipam:
             config:
-            - subnet: 172.70.0.0/16
+            - subnet: 172.80.0.0/16
