@@ -32,7 +32,7 @@ services:
             - "80"
             - "443"
         volumes:
-            - /home/$USER/public_html:/var/www/html/
+            - ./wordpress:/var/www/html/
             - ./logs:/var/log/apache2
             - ./conf:/etc/apache2/sites-enabled/
             - ./certs:/usr/local/apache2/certs
