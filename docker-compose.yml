@@ -2,8 +2,8 @@ version: '3.2'
 services:
     mariadb:
         image: mariadb:latest
-        container_name: docker_db
-        hostname: docker_db
+        container_name: wordpress_db
+        hostname: wordpress_host
         expose:
             - "3306"
         volumes:
@@ -16,8 +16,8 @@ services:
                 ipv4_address: 172.80.0.2
     web:
         image: php/7.2.10
-        container_name: docker
-        hostname: docker
+        container_name: wordpress
+        hostname: wordpress
         privileged: true
         ports:
             - target: 80
