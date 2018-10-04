@@ -20,8 +20,14 @@ services:
         hostname: docker
         privileged: true
         ports:
-            - "7200:80"
-            - "7443:443"
+            - target: 80
+              published: 7200
+              protocol: tcp
+              mode: host
+            - target: 443
+              published: 7443
+              protocol: tcp
+              mode: host
         expose:
             - "80"
             - "443"
