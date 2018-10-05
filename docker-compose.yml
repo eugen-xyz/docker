@@ -13,7 +13,7 @@ services:
             - MYSQL_ROOT_PASSWORD=bangtan
         networks:
             net:
-                ipv4_address: 172.80.0.2
+              ipv4_address: 172.18.0.2
     web:
         image: php/7.2.10
         container_name: wordpress
@@ -21,11 +21,11 @@ services:
         privileged: true
         ports:
             - target: 80
-              published: 7200
+              published: 7182
               protocol: tcp
               mode: host
             - target: 443
-              published: 7443
+              published: 7183
               protocol: tcp
               mode: host
         expose:
@@ -38,10 +38,10 @@ services:
             - ./certs:/usr/local/apache2/certs
         networks:
             net:
-                ipv4_address: 172.80.0.3
+              ipv4_address: 172.18.0.3
 networks:
-    net:
-        driver: bridge
-        ipam:
-            config:
-            - subnet: 172.80.0.0/16
+  net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.18.0.0/16
